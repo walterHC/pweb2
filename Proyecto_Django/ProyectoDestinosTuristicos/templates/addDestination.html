@@ -32,7 +32,7 @@
     	<!-- Header -->
     	<div id="header">
         	<div id="branding">
-		<h1 id="site-name"><a href="#">Administración de Django</a></h1>
+		<h1 id="site-name"><a href="#">Administración de Destinos</a></h1>
 
         </div>
         
@@ -54,7 +54,7 @@
     <!-- Content -->
     <div id="content" class="colM">
         
-        <h1>Modificar destination</h1>
+	    <h1>Modificar destinos</h1>
         <div id="content-main">
 
   <ul class="object-tools">
@@ -62,48 +62,8 @@
 	<li><a href="#" class="historylink">Histórico</a></li>
   </ul>
 
-<form enctype="multipart/form-data" action="addDestination" method="post" id="destination_form"> {% csrf_token %}
-
-<div>
-
-  <fieldset class="module aligned ">
-        <div class="form-row field-nombreCiudad">
-                <div>
-                        <label class="required" for="id_nombreCiudad">NombreCiudad:</label>
-                            <input type="text" name="nombreCiudad" value="" class="vTextField" maxlength="50" required id="id_nombreCiudad">
-                </div>
-        </div>
-
-        <div class="form-row field-imagenCiudad">
-                <div>
-
-                        <label class="required" for="id_imagenCiudad">ImagenCiudad:</label>
-
-                            <input type="file" name="imagenCiudad" accept="image/*" required id="id_imagenCiudad">
-                </div>
-        </div>
-    
-        <div class="form-row field-descripcionCiudad">
-                <div>
-                        <label class="required" for="id_descripcionCiudad">DescripcionCiudad:</label>
-                            <textarea name="descripcionCiudad" cols="40" rows="10" class="vLargeTextField" required id="id_descripcionCiudad"></textarea>
-                </div>
-        </div>
-    
-        <div class="form-row field-precioTour">
-                <div>
-                        <label class="required" for="id_precioTour">PrecioTour:</label>
-                            <input type="number" name="precioTour" value="" class="vIntegerField" required id="id_precioTour">
-                </div>
-        </div>
-    
-        <div class="form-row field-ofertaTour">
-                <div class="checkbox-row">
-                        <input type="checkbox" name="ofertaTour" id="id_ofertaTour" ><label class="vCheckboxLabel" for="id_ofertaTour">OfertaTour</label>
-                </div>
-        </div>
-    
-</fieldset>
+<form enctype="multipart/form-data"  method="post" id="destination_form"> {% csrf_token %}
+	{{ form.as_p }}
 
 	<div class="submit-row">
 
@@ -115,7 +75,7 @@
 	  	<h3>{{message}}</h3>
 	  {% endfor %}
         </div>
-
+	</form>
 
     <script type="text/javascript"
             id="django-admin-form-add-constants"
@@ -128,10 +88,6 @@
         src="/static/admin/js/prepopulate_init.js"
         data-prepopulated-fields="[]">
     </script>
-
-</div>
-</form>
-</div>
 
         <br class="clear">
     </div>

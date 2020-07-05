@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"> 
+		<link rel="stylesheet" type="text/css" href="">
+		<script type="text/javascript" src="consulta.js"></script>
+		<title>Consultas  </title>
+	</head>
+	<body>
+		<header >
+			<h1 >BIENVENIDO</h1>
+		</header>
+		<section align='center' >
+    		             <fieldset >
+				     <!--<img src="https://cdn4.iconfinder.com/data/icons/green-shopper/1068/user.png" class="profile" height="100px" width="100px">-->
+    		                   <legend>Búsqueda </legend>
+				      <label class='label'> BASE DE DATOS: </label><br />
+    		                      <select id ="nameBD" name="nameDB">
+      		                         <option value="Actor" onclick="guia('A')"> ACTOR <br>
+      		                         <option value="Movie" onclick="guia('M')"> MOVIE <br>
+    		                      </select>
+				      <label class='label'> SUGERENCIAS: </label><br />
+				      <div id="sugerencia"></div><BR />
+				      <br /><label class='label'> CONSULTA: </label><br />
+    			              <input id="consulta" type="text" name="consulta" placeholder="consulta[name]" ><br>
+				      <button onclick="consultaSQlite()"> Consultar</button>
+    		     	     </fieldset>
+			<div id="resultado"><h2>--- RESULTADO ---</h2> <div>
+		</section>
+	</body>
+</html>
+
+

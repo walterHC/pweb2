@@ -9,3 +9,4 @@ class Destination(models.Model):
     descripcionCiudad = models.TextField()
     precioTour = models.IntegerField()
     ofertaTour = models.BooleanField(default=False)
+
