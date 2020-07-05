@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .models import Destination
-from .forms import DestinationForm
+from .forms import DestinationForm, RawDestinationForm
 
 # Create your views here.
 def addDestination(request):
@@ -41,4 +41,18 @@ def addDestination1(request):
 
     else:
         return render(request,'addDestination.html')
+
+def insertNewDestination(request):
+    form = RawDestinationForm()
+    if request.method == "POST":
+        if form.is_valid():
+            print(form.cleaned_data)
+            Destination.objects.create(**form.cleaned_data)
+        else:
+            print(form.errors)
+    context = {
+            'form':form,
+            }
+
+    return render(request,'insertDestination.html', context)
 

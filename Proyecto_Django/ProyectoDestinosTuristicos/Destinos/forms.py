@@ -11,3 +11,10 @@ class DestinationForm(forms.ModelForm):
                 'precioTour',
                 'ofertaTour',
                 ]
+
+class RawDestinationForm(forms.Form):
+    nombreCiudad = forms.CharField()
+    imagenCiudad = forms.ImageField()
+    descripcionCiudad = forms.CharField()
+    precioTour = forms.IntegerField()
+    ofertaTour = forms.BooleanField()
