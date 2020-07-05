@@ -56,3 +56,11 @@ def insertNewDestination(request):
 
     return render(request,'insertDestination.html', context)
 
+def destinationList(request):
+    queryset = Destination.objects.all()
+    context = {
+            'objectList':queryset,
+
+            }
+    return render(request, 'showDestination.html', context)
+

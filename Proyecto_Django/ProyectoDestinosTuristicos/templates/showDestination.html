@@ -1,0 +1,25 @@
+<html>
+
+<head>
+
+<title>Destinos</title>
+
+</head>
+
+<body>
+
+<b> Todos los destinos </b><br>
+
+{% for obj in objectList %}
+<p>{{ obj.id }}- {{ obj.nombreCiudad}}</p>
+<div> {{ obj.imagenCiudad }}<div>
+<div> {{ obj.descripcionCiudad }}<div>
+<div> {{ obj.precioTour }}<div>
+<div> {{ obj.ofertaTour }}<div>
+
+{% endfor %}
+
+</body>
+
+</html>
+
