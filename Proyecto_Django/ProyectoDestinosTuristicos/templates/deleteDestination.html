@@ -1,0 +1,21 @@
+<html>
+
+<head>
+
+<title>borrar destinos</title>
+
+</head>
+
+<body>
+
+<b>Formulario para el borrado de un destino</b><br>
+
+<form action="" method='POST'>{% csrf_token %}
+	<h2> Estas seguro de querer borrar el destino: {{ object.nombreCiudad }}</h2>
+	<input type="submit" value='SI' />
+	</form>
+	<div> <a href="../">Cancelar</<></div>
+</body>
+
+</html>
+
