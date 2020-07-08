@@ -3,7 +3,9 @@ from . import views
 
 
 urlpatterns = [
-        path('addDestination', views.addDestination, name="addDestination"),
-        path('insertNewDestination', views.insertNewDestination, name="insertNewDestination"),
-        path('destinationList', views.destinationList, name="listing")
+        path('addDestination', views.addDestination, name="añadirDestinos2"),
+        path('añadir', views.insertDestination, name="añadirDestino"),
+        path('listar', views.listDestinations, name="listarDestinos"),
+        path('<int:myID>/', views.showDestination, name="mostrarDestino"),
+        path('<int:myID>/borrar', views.deleteDestination, name="eliminarDestino")
     ]

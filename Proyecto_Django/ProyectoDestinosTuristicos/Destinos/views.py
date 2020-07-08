@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Destination
 from .forms import DestinationForm, RawDestinationForm
 
@@ -42,25 +42,49 @@ def addDestination1(request):
     else:
         return render(request,'addDestination.html')
 
-def insertNewDestination(request):
+def insertDestination(request):
     form = RawDestinationForm()
     if request.method == "POST":
         if form.is_valid():
-            print(form.cleaned_data)
             Destination.objects.create(**form.cleaned_data)
+            print("form.cleaned_data")
         else:
-            print(form.errors)
+            print("form.errors")
+
     context = {
             'form':form,
             }
 
     return render(request,'insertDestination.html', context)
 
-def destinationList(request):
+
+def showDestination(request, myID):
+    obj = Destination.objects.get(id = myID)
+    context = {
+            'object': obj,
+            }
+    return render(request,"showDestination.html", context)
+
+
+def listDestinations(request):
     queryset = Destination.objects.all()
     context = {
             'objectList':queryset,
-
             }
-    return render(request, 'showDestination.html', context)
 
+    return render(request, 'showListDestinations.html', context)
+
+
+def deleteDestination(request, myID):
+    obj = get_object_or_404(Destination, id=myID)
+
+    if request.method == 'POST':
+        obj.delete()
+        print("borrado con exito")
+        return redirec("../añadir")
+
+    context = {
+            'object':obj
+            }
+
+    return render(request,"deleteDestination.html", context)

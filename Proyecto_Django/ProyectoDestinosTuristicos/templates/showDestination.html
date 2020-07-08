@@ -1,23 +1,18 @@
 <html>
 
 <head>
-
 <title>Destinos</title>
-
 </head>
 
 <body>
 
-<b> Todos los destinos </b><br>
+<b>  destino </b><br>
 
-{% for obj in objectList %}
-<p>{{ obj.id }}- {{ obj.nombreCiudad}}</p>
-<div> {{ obj.imagenCiudad }}<div>
-<div> {{ obj.descripcionCiudad }}<div>
-<div> {{ obj.precioTour }}<div>
-<div> {{ obj.ofertaTour }}<div>
-
-{% endfor %}
+<p>{{ object.id }} - {{ object.nombreCiudad}} </p>
+<div> {{ object.imagenCiudad }}<div>
+<div> {{ object.descripcionCiudad }}<div>
+<div> {{ object.precioTour }}<div>
+<div> {{ object.ofertaTour }}<div>
 
 </body>
 

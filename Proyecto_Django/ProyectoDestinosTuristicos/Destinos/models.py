@@ -10,3 +10,6 @@ class Destination(models.Model):
     precioTour = models.IntegerField()
     ofertaTour = models.BooleanField(default=False)
 
+
+    def get_absolute_url(self):
+        return "/administrador/" + str(self.id) +"/"
