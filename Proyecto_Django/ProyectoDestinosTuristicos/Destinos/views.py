@@ -57,6 +57,17 @@ def insertDestination(request):
 
     return render(request,'insertDestination.html', context)
 
+def editDestination(request, myID):
+    obj = Destination.objects.get(id = myID)
+    form = DestinationForm(request.POST or None, instance = obj)
+    if form.is_valid():
+        form.save()
+        form = DestinationForm()
+    context = {
+            'form': form,
+            }
+    return render(request,"editDestination.html", context)
+
 
 def showDestination(request, myID):
     obj = Destination.objects.get(id = myID)
@@ -81,7 +92,7 @@ def deleteDestination(request, myID):
     if request.method == 'POST':
         obj.delete()
         print("borrado con exito")
-        return redirec("../añadir")
+        return redirec("/")
 
     context = {
             'object':obj
