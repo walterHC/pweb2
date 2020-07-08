@@ -12,4 +12,4 @@ class Destination(models.Model):
 
 
     def get_absolute_url(self):
-        return "/administrador/" + str(self.id) +"/"
+        return "/administration/" + str(self.id) +"/"

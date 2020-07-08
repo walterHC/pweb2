@@ -1,11 +1,5 @@
-<html>
-
-<head>
-<title>Destinos</title>
-</head>
-
-<body>
-
+{% extends 'administration.html' %}
+{% block content %}
 <b>  destino </b><br>
 
 <p>{{ object.id }} - {{ object.nombreCiudad}} </p>
@@ -14,7 +8,7 @@
 <div> {{ object.precioTour }}<div>
 <div> {{ object.ofertaTour }}<div>
 
-</body>
-
-</html>
-
+		<p><a href="borrar"> borrar</a> </p><br />
+		<p><a href="editar"> editar</a> </p><br />
+		<p><a href="../"> regresar</a> </p><br />
+		{% endblock %}

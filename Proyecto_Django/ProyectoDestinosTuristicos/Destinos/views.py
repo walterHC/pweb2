@@ -42,6 +42,12 @@ def addDestination1(request):
     else:
         return render(request,'addDestination.html')
 
+
+def administration(request):
+    return render(request, "administration.html")
+
+
+
 def insertDestination(request):
     form = RawDestinationForm()
     if request.method == "POST":

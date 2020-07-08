@@ -1,13 +1,6 @@
-<html>
+{% extends 'administration.html' %}
 
-<head>
-
-<title> destino </title>
-
-</head>
-
-<body>
-
+{% block content %}
 <b>Formulario de edicion de  destino</b><br>
 
 <form action="" method='POST'>{% csrf_token %}
@@ -16,7 +9,4 @@
 	</form>
 	<div> <a href="../">Cancelar</<></div>
 
-</body>
-
-</html>
-
+	{% endblock%}

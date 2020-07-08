@@ -1,21 +1,10 @@
-<html>
-
-<head>
-
-<title>ingresar destinos</title>
-
-</head>
-
-<body>
-
+{% extends 'administration.html' %}
+{% block content %}
 <b>Formulario de ingreso de nuevo destino</b><br>
 
 <form method='POST'>{% csrf_token %}
 	{{ form.as_p }}
 	<input type="submit" value='grabar' />
 	</form>
-	<div> <a href="destinationList">ver lista de destinos</<></div>
-
-</body>
-
-</html>
+	<div> <a href="listar">lista destinos</a></div>
+{% endblock %}

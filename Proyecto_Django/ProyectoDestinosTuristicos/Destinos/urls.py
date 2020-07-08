@@ -3,6 +3,8 @@ from . import views
 
 
 urlpatterns = [
+        
+        path('administrar', views.administration, name="zonaAdminstracion"),
         path('addDestination', views.addDestination, name="añadirDestinos2"),
         path('añadir', views.insertDestination, name="añadirDestino"),
         path('listar', views.listDestinations, name="listarDestinos"),
