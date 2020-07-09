@@ -1,17 +1,19 @@
 {% extends 'administration.html'%}
 {% block content %}
 
-<b> Todos los destinos </b><br>
+	<b> Todos los destinos </b><br>
+	<table>
+	{% for obj in objectList %}
+	   <tr>	
+	      <p><i>{{ obj.id }} .- <a href='{{ obj.get_absolute_url }}'>{{ obj.nombreCiudad}}</a></i></p>
+	      <p><strong>Imagen:</strong> {{ obj.imagenCiudad }}</p>
+	      <p><strong>Descripcion:</strong> {{ obj.descripcionCiudad }}</p>
+	      <p><strong>Precio:</strong> {{ obj.precioTour }}</p>
+	      <p><strong>Oferta:<strong>  {{ obj.ofertaTour }}</p>
+	   </tr>
 
-{% for obj in objectList %}
-
-<p>{{ obj.id }}<a href='{{ obj.get_absolute_url }}'> {{ obj.nombreCiudad}}</a></p>
-<div> {{ obj.imagenCiudad }}<div>
-<div> {{ obj.descripcionCiudad }}<div>
-<div> {{ obj.precioTour }}<div>
-<div> {{ obj.ofertaTour }}<div>
-
-{% endfor %}
+	{% endfor %}
+	</table>
 
 {% endblock %}
 

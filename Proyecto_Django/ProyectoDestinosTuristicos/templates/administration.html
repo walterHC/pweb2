@@ -1,46 +1,41 @@
 <!DOCTYPE html>
 
 <html lang="es" >
-<head>
-<title>Sitio de administración de Destinos</title>
-<link rel="stylesheet" type="text/css" href="/static/admin/css/base.css">
-<link rel="stylesheet" type="text/css" href="/static/admin/css/dashboard.css">
+    <head>
+          <title>Sitio de administración de Destinos</title>
+          <link rel="stylesheet" type="text/css" href="/static/admin/css/base.css">
+          <link rel="stylesheet" type="text/css" href="/static/admin/css/dashboard.css">
+          <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0">
+          <link rel="stylesheet" type="text/css" href="/static/admin/css/responsive.css">
+          <meta name="robots" content="NONE,NOARCHIVE">
+    </head>
 
-    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="/static/admin/css/responsive.css">
+    <body class=" dashboard"
+          data-admin-utc-offset="-18000">
 
-<meta name="robots" content="NONE,NOARCHIVE">
-</head>
-
-<body class=" dashboard"
-  data-admin-utc-offset="-18000">
-
-<!-- Container -->
-<div id="container">
+        <!-- Container -->
+        <div id="container">
     
-    <!-- Header -->
-    <div id="header">
-        <div id="branding">
+               <!-- Header -->
+                  <div id="header">
+                       <div id="branding">
         
-<h1 id="site-name"><a href="">Administración de Destinos</a></h1>
+                            <h1 id="site-name"><a href="">Administración de Destinos</a></h1>
 
-        </div>
+                       </div>   
         
-        <div id="user-tools">
+                       <div id="user-tools">
             
-                Bienvenido/a,
-		<strong>{{ user.first_name }}</strong>.
+                            Bienvenido/a,
+		            <strong>{{ user.first_name }}</strong>.
             
-                    <a href="/">Ver el sitio</a> /
-                
-                <a href="">Cambiar contraseña</a> /
-                
-                <a href="">Terminar sesión</a>
-            
-        </div>
+                            <a href="/">Ver el sitio</a> /
+                            <a href="">Cambiar contraseña</a> /
+                            <a href="">Terminar sesión</a>
+                      </div>
         
-    </div>
-    <!-- END Header -->
+                 </div>
+              <!-- END Header -->
     
     <!-- Content -->
     <div id="content" class="colMS">
@@ -51,25 +46,24 @@
 
         <div class="app-Destinos module">
         <table>
-        <caption>
-            <a href="" class="section" title="Modelos en la aplicación Destinos">Destinos Turisticos</a>
-        </caption>
+	   {% block content %}
+               <caption>
+                   <h2 class="section" title="Modelos en la aplicación Destinos">Destinos Turisticos</h2>
+               </caption>
         
-            <tr class="model-destination">
+               <tr class="model-destination">
             
-                <th scope="row"><a href="">Destinos</a></th>
+                   <th scope="row"><a href="">Destinos</a></th>
 
-            </tr>
-	    <tr>	
-			{% block content %}
-                	   <td><a href="añadir" class="addlink">Añadir</a></td>
+               </tr>
+	       <tr>	
+                   <td><a href="añadir" class="addlink">Añadir</a></td>
             
-                	   <td><a href="listar" class="addlink">listar</a></td>
-			{% endblock %}
-        	</tr>
+                   <td><a href="listar" class="addlink">listar</a></td>
+               </tr>
+	    {% endblock %}
         </table>
         </div>
-    
 
 </div>
 

@@ -1,14 +1,18 @@
 {% extends 'administration.html' %}
 {% block content %}
-<b>  destino </b><br>
+	<b>  destino </b><br /><br/>
 
-<p>{{ object.id }} - {{ object.nombreCiudad}} </p>
-<div> {{ object.imagenCiudad }}<div>
-<div> {{ object.descripcionCiudad }}<div>
-<div> {{ object.precioTour }}<div>
-<div> {{ object.ofertaTour }}<div>
+	<p><i>{{ object.id }} - <b> {{ object.nombreCiudad}}</b></i></p>
+	<p><strong>Imagen de la ciudad:</strong> {{ object.imagenCiudad }}</p>
+	<p><strong>Descripcion de la ciudad:</strong> {{ object.descripcionCiudad }}</p>
+	<p><strong> precio del Viaje:</strong>{{ object.precioTour }}</p>
+	<p><strong> oferta:</strong>{{ object.ofertaTour }}</p><br />
 
-		<p><a href="borrar"> borrar</a> </p><br />
-		<p><a href="editar"> editar</a> </p><br />
-		<p><a href="../"> regresar</a> </p><br />
-		{% endblock %}
+	<table>
+		<tr>
+			<td><p><a href="borrar"> borrar</a> </p></td>
+			<td><p><a href="editar"> editar</a> </p></td>
+			<td><p><a href="../"> regresar</a> </p></td>
+		</tr>
+	</table>
+{% endblock %}

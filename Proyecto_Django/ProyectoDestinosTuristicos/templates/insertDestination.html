@@ -1,10 +1,12 @@
 {% extends 'administration.html' %}
 {% block content %}
-<b>Formulario de ingreso de nuevo destino</b><br>
+	<tr>
+		<b>Formulario de ingreso de nuevo destino</b><br /><br />
 
-<form method='POST'>{% csrf_token %}
-	{{ form.as_p }}
-	<input type="submit" value='grabar' />
-	</form>
-	<div> <a href="listar">lista destinos</a></div>
+		<form method='POST'>{% csrf_token %}
+			{{ form.as_p }}
+			<input type="submit" value='grabar' />
+		</form>
+		<div><button> <a href="listar">lista destinos</a></button></div>
+	</tr>
 {% endblock %}
