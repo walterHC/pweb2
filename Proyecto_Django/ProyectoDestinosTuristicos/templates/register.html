@@ -9,7 +9,8 @@
   <link rel="stylesheet" href="{% static 'misEstilos/estilo.css' %}">
   <title>Registro de nuevo  usuario</title>
 </head>
-<body>
+<body style="background-image: url({% static 'misImagenes/fondo.jpg' %})">;
+
     <form class="form-register" action="register" method="post">{% csrf_token %}
     <h4>Formulario de Registro</h4>
     <input class="controls" type="text" name="first_name" id="nombres" placeholder="Primer Nombre"><br>
@@ -19,12 +20,10 @@
     <input class="controls" type="password" name="password1" id="correo" placeholder="contraseña"><br>
     <input class="controls" type="password" name="password2" id="correo" placeholder="Confirme Contraseña"><br>
     <input class="botons" type="submit" value="Registrar"><br>
-    <p><a href="login">¿Ya tengo Cuenta?</a></p>
+    <p><a href="login">¿Ya tengo Cuenta?</a></p><br />
+    {% for message in messages %}
+	  <h2>{{message}}</h2>
+    {% endfor %}
   </form>
-  <div>
-	  {% for message in messages %}
-	  	<h3>{{message}}</h3>
-	  {% endfor %}
-  </div>
 </body>
 </html>

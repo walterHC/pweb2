@@ -1,11 +1,11 @@
 {% extends 'administration.html' %}
 {%  block content %}
-	<b>Formulario para el borrado de un destino</b><br /><br />
-
-	<form action="" method='POST'>{% csrf_token %}
-		<h2> Estas seguro de querer borrar el destino:<b> {{ object.nombreCiudad }} </b></h2>
-	      <input type="submit" value='SI' />
-	</form>
-	<button> <a href="../">Cancelar</a></button>
+	<table>
+		<tr><p> Estas seguro de querer borrar el destino:<b> {{ object.nombreCiudad }} </b></p></tr><br />
+		<tr><form action="" method='POST'>{% csrf_token %}
+				<td><input type="submit" value='SI' /></td>
+			<td><a href="/administration/listar">Cancelar</a></td>
+		</form></tr><br />
+	</table>
 {% endblock %}
 

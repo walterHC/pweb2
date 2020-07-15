@@ -16,13 +16,11 @@ def login(request):
             auth.login(request,user)
             return redirect("/")
         else:
-            messages.info(request,"No estas Registrado")
+            messages.info(request,"ERROR: revice usuario y constraseña")
             return redirect('login')
     
     else:
         return render(request,'login.html')
-
-
 
 def register(request):
     if request.method == 'POST':
@@ -35,20 +33,19 @@ def register(request):
 
         if password1 == password2:
             if User.objects.filter(username=username).exists():
-                messages.info(request,'Este nombre de usuario ya fue tomado, elija otro por favor.')
+                messages.info(request,'nombre de usuario usado')
                 return redirect('register')
             elif User.objects.filter(email=email).exists():
-                messages.info(request,'Este correo ya fue usado')
+                messages.info(request,'correo ya registrado')
                 return redirect('register')
             else:
                 user = User.objects.create_user(username=username, password=password1,email=email,first_name=first_name,last_name=last_name)
                 user.save()
-                messages.info(request,'Usuario creado con exito')
                 return redirect('login')
 
         else:
-            messages.info(request,'las contraseñas no coinciden ...')
-            return redirect('/')
+            messages.info(request,'contraseñas no coinciden ')
+            return redirect('register')
 
     else:
         return render(request,'register.html')

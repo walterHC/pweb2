@@ -4,10 +4,6 @@
   box-sizing: border-box;
 }
 
-body {
-  background-image: url('static/misImagenes/fondo.jpg');
-}
-
 .form-register {
   width: 400px;
   background: #24303c;
@@ -21,6 +17,7 @@ body {
 }
 
 .form-register h4 {
+  font-family: 'Lobster';
   font-size: 22px;
   margin-bottom: 20px;
 }

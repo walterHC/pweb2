@@ -1,12 +1,13 @@
 {% extends 'administration.html' %}
 
 {% block content %}
-	<b>Formulario de edicion de  destino</b><br /><br />
-
-	<form action="" method='POST'>{% csrf_token %}
-	      {{ form.as_p }}
-	      <input type="submit" value='guardar cambios' />
-	</form>
-	<button> <a href="../">Cancelar</a></button>
-
+	<table>
+		<tr>
+			<form enctype="multipart/form-data" action="" method='POST'>{% csrf_token %}
+	      		    {{ form.as_p }}
+	      		    <td><input type="submit" value='guardar cambios' /></td>
+			    <td><a href="/administration/listar"/>cancelar</a></td>
+			</form>
+		</tr>
+	</table>
 {% endblock%}

@@ -1,12 +1,16 @@
 {% extends 'administration.html' %}
 {% block content %}
-	<tr>
-		<b>Formulario de ingreso de nuevo destino</b><br /><br />
+		<table>
+		    <tr>
+			<form enctype="multipart/form-data" method='POST'>{% csrf_token %}
+			      {{ form.as_p }}
+                              <tr>
+                                   <td><input type="submit" value='grabar' /></td>
+                                   <td><p><a href="listar">listar</a></p></td>
+                                   <td><p><a href="/administration/administrar">cancelar</a></p></td>
+                    	      </tr>
+			</form>
+		    </tr>
+		</table>
 
-		<form method='POST'>{% csrf_token %}
-			{{ form.as_p }}
-			<input type="submit" value='grabar' />
-		</form>
-		<div><button> <a href="listar">lista destinos</a></button></div>
-	</tr>
 {% endblock %}

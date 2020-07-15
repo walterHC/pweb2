@@ -7,10 +7,10 @@
     <title>Login </title>
     <link rel="stylesheet" href="{% static 'misEstilos/master.css' %}">
   </head>
-  <body style="background-image:url(static/misImagenes/fondoL.jpg)">
+  <body style="background-image:url({% static 'misImagenes/fondoL.jpg' %})">
 
     <div class="login-box">
-      <img src="static/misImagenes/avatar.png" class="avatar" alt="Avatar Image">
+	    <img src="{% static 'misImagenes/avatar.png' %}" class="avatar" alt="Avatar Image">
       <h1>Login</h1>
       <form action="login" method="post">{% csrf_token %}
         <label for="username" >Usuario</label>

@@ -4,43 +4,41 @@ from .forms import DestinationForm, RawDestinationForm
 
 # Create your views here.
 def addDestination(request):
+    form = DestinationForm() 
     if request.method == "POST":
-        form = DestinationForm(request.POST)
+        form = DestinationForm(request.POST or None, request.FILES)
         if form.is_valid():
-            Destination.save()
-            return redirect('/')
-
-    else:
-        form = DestinationForm()
-
+            form.save()
+            form = DestinationForm()
+            return redirect('/administration/administrar')
 
     context = {
             'form': form
             }
 
-    return render(request,"addDestination.html", context)
-
+    return render(request,"insertDestination.html", context)
 
 def addDestination1(request):
     if request.method == 'POST':
         nombreCiudad = request.POST['nombreCiudad']
-        imagenCiudad = request.POST['imagenCiudad']
+        imagenCiudad = request.FILES['imagenCiudad']
         descripcionCiudad = request.POST['descripcionCiudad']
         precioTour = request.POST['precioTour']
-        ofertaTour = request.POST['ofertaTour']
+        ofertaTour = request.POST.get('ofertaTour', False)
 
         if Destination.objects.filter(nombreCiudad=nombreCiudad).exists():
             messages.info(request,'Esta ciudad ya fue agregada')
             return redirect('addDestination')
         else:
-
-            Destination.objects.all()
             destino = Destination.objects.create(nombreCiudad=nombreCiudad, imagenCiudad=imagenciudad,descripcionciudad=descripcionCiudad, precioTour=precioTour,ofertaTour=ofertaTour)
             destino.save()
+
+            dests = Destination.objects.all()
             return redirect('/')
 
     else:
-        return render(request,'addDestination.html')
+        dests = Destination.objects.all()
+        return render(request,'insertDestinatio.html',{'dests':dests})
 
 
 def administration(request):
@@ -54,6 +52,7 @@ def insertDestination(request):
         if form.is_valid():
             Destination.objects.create(**form.cleaned_data)
             print("form.cleaned_data")
+            return redirect("/administration/administrar")
         else:
             print("form.errors")
 
@@ -65,10 +64,14 @@ def insertDestination(request):
 
 def editDestination(request, myID):
     obj = Destination.objects.get(id = myID)
-    form = DestinationForm(request.POST or None, instance = obj)
-    if form.is_valid():
-        form.save()
-        form = DestinationForm()
+    form = DestinationForm(instance = obj)
+
+    if request.method == "POST":
+        form = DestinationForm(request.POST or None,request.FILES, instance=obj)
+        if form.is_valid():
+            Obj = form.save(commit=False)
+            obj.save()
+            return redirect("/administration/administrar")
     context = {
             'form': form,
             }
@@ -98,7 +101,7 @@ def deleteDestination(request, myID):
     if request.method == 'POST':
         obj.delete()
         print("borrado con exito")
-        return redirec("/")
+        return redirect("/administration/administrar")
 
     context = {
             'object':obj

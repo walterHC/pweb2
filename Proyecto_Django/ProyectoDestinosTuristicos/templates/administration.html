@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 
 <html lang="es" >
@@ -10,7 +12,7 @@
           <meta name="robots" content="NONE,NOARCHIVE">
     </head>
 
-    <body class=" dashboard"
+    <body style="background-image:url({% static 'misImagenes/fondoA.jpg' %})" class=" dashboard"
           data-admin-utc-offset="-18000">
 
         <!-- Container -->
@@ -29,9 +31,7 @@
                             Bienvenido/a,
 		            <strong>{{ user.first_name }}</strong>.
             
-                            <a href="/">Ver el sitio</a> /
-                            <a href="">Cambiar contraseña</a> /
-                            <a href="">Terminar sesión</a>
+                            <a href="/">Volver a Home</a> /
                       </div>
         
                  </div>
@@ -45,8 +45,7 @@
 <div id="content-main">
 
         <div class="app-Destinos module">
-        <table>
-	   {% block content %}
+        <table >
                <caption>
                    <h2 class="section" title="Modelos en la aplicación Destinos">Destinos Turisticos</h2>
                </caption>
@@ -57,118 +56,21 @@
 
                </tr>
 	       <tr>	
-                   <td><a href="añadir" class="addlink">Añadir</a></td>
-            
-                   <td><a href="listar" class="addlink">listar</a></td>
+                   <td><a href="añadir" >Añadir</a></td>
+                   <td><a href="listar" >listar</a></td>
+                   <td><a href="/" >Home</a></td>
                </tr>
-	    {% endblock %}
+	       <tr>
+		{% block content %}
+
+	    	{% endblock %}
+	       </tr>
         </table>
         </div>
 
 </div>
 
         
-<div id="content-related">
-    <div class="module" id="recent-actions-module">
-        <h2>Acciones recientes</h2>
-        <h3>Mis acciones</h3>
-            
-            <ul class="actionlist">
-            
-            <li class="changelink">
-                
-                    <a href="/admin/Destinos/destination/5/change/">Destination object (5)</a>
-                
-                <br>
-                
-                    <span class="mini quiet">Destination</span>
-                
-            </li>
-            
-            <li class="changelink">
-                
-		    <a href="">{{ request.user }}</a>
-                
-                <br>
-                
-                    <span class="mini quiet">Usuario</span>
-                
-            </li>
-            
-            <li class="addlink">
-                
-                    <a href="/admin/Destinos/destination/6/change/">Destination object (6)</a>
-                
-                <br>
-                
-                    <span class="mini quiet">Destination</span>
-                
-            </li>
-            
-            <li class="addlink">
-                
-                    <a href="/admin/Destinos/destination/5/change/">Destination object (5)</a>
-                
-                <br>
-                
-                    <span class="mini quiet">Destination</span>
-                
-            </li>
-            
-            <li class="addlink">
-                
-                    <a href="/admin/Destinos/destination/4/change/">Destination object (4)</a>
-                
-                <br>
-                
-                    <span class="mini quiet">Destination</span>
-                
-            </li>
-            
-            <li class="addlink">
-                
-                    <a href="/admin/Destinos/destination/3/change/">Destination object (3)</a>
-                
-                <br>
-                
-                    <span class="mini quiet">Destination</span>
-                
-            </li>
-            
-            <li class="addlink">
-                
-                    <a href="/admin/Destinos/destination/2/change/">Destination object (2)</a>
-                
-                <br>
-                
-                    <span class="mini quiet">Destination</span>
-                
-            </li>
-            
-            <li class="changelink">
-                
-                    <a href="/admin/Destinos/destination/1/change/">Destination object (1)</a>
-                
-                <br>
-                
-                    <span class="mini quiet">Destination</span>
-                
-            </li>
-            
-            <li class="addlink">
-                
-                    <a href="/admin/Destinos/destination/1/change/">Destination object (1)</a>
-                
-                <br>
-                
-                    <span class="mini quiet">Destination</span>
-                
-            </li>
-            
-            </ul>
-            
-    </div>
-</div>
 
         <br class="clear">
     </div>
