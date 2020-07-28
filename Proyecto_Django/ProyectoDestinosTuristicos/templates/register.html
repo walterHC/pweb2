@@ -20,6 +20,10 @@
     <input class="botons" type="submit" value="Register"><br>
     <p><a href="#">¿Ya tengo Cuenta?</a></p>
   </form>
-
+  <div>
+	  {% for message in messages %}
+	  	<h3>{{message}}</h3>
+	  {% endfor %}
+  </div>
 </body>
 </html>
