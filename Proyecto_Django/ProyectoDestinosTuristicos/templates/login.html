@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Login </title>
+    <link rel="stylesheet" href="/css/master.css">
+  </head>
+  <body>
+
+    <div class="login-box">
+      <img src="img/logo.png" class="avatar" alt="Avatar Image">
+      <h1>Login</h1>
+      <form action="login" method="post">{% csrf_token %}
+        <label for="username" >Usuario</label>
+        <input type="text" name="username"  placeholder="Ingrese Usuario">
+        <label for="password">Password</label>
+        <input type="password" name="password"  placeholder="Ingrese Contraseña">
+        <input type="submit" value="Enviar">
+        <a href="#">Don't have An account?</a>
+      </form>
+    </div>
+    <div>
+          {% for message in messages %}
+                <h3>{{message}}</h3>
+          {% endfor %}
+    </div>
+  </body>
+</html>
