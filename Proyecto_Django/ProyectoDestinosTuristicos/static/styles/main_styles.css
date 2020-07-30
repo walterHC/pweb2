@@ -236,7 +236,6 @@ section
 }
 .background_image
 {
-	background-image:url("/home/walter/WorkSpace/Pweb2/Proyecto_Django/ProyectoDestinosTuristicos/static/images/home_slider.jpg");
 	position: absolute;
 	top: 0;
 	left: 0;

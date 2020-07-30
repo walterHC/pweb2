@@ -22,9 +22,9 @@ from django.conf.urls.static import static
 urlpatterns = [
 
     path('', include('travello.urls')),
-    #path('agregar/',addDestination,name="addDestination"),
     path('admin/',admin.site.urls),
     path('accounts/', include('Accounts.urls')),
+    path('añadir/', include('Destinos.urls'))
 ]
 
 urlpatterns = urlpatterns + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

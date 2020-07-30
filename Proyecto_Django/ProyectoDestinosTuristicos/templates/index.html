@@ -34,15 +34,15 @@
 									<li class="active"><a href="index.html">Home</a></li>
 									<li><a href="contact.html">Contacto</a></li>
 									{% if user.is_authenticated  and not user.is_superuser %}				
-										<li>Hello, {{ user.first_name }}</li>
+										<li>Hola, {{ user.first_name }}</li>
 									     	<li><a href="accounts/logout">Cerrar Sesion</a></li>
 									{% elif user.is_authenticated and user.is_superuser %}
 										<li>Hello, {{ user.first_name }}</li>
 									     	<li><a href="accounts/logout">Cerrar Sesion</a></li>
-										<li><a href="Registrodestino.html">registrar Destino</a></li>
+										<li><a href="añadir/addDestination">registrar Destino</a></li>
 									
 									{% else %}
-										<li><a href="accounts/register">Registrarse</a></li>
+										<li>Hola</li>
 										<li><a href="accounts/login">Iniciar Sesion</a></li>
 
 									{% endif %}
