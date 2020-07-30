@@ -1,0 +1,30 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="{% static 'misEstilos/estilo.css' %}">
+  <title>Registro de nuevo  usuario</title>
+</head>
+<body>
+    <form class="form-register" action="register" method="post">{% csrf_token %}
+    <h4>Formulario de Registro</h4>
+    <input class="controls" type="text" name="first_name" id="nombres" placeholder="Primer Nombre"><br>
+    <input class="controls" type="text" name="last_name" id="apellidos" placeholder=" Apellido "><br>
+    <input class="controls" type="text" name="username" id="nombrePila" placeholder="Usuario"><br>
+    <input class="controls" type="email" name="email" id="correo" placeholder="email"><br>
+    <input class="controls" type="password" name="password1" id="correo" placeholder="contraseña"><br>
+    <input class="controls" type="password" name="password2" id="correo" placeholder="Confirme Contraseña"><br>
+    <input class="botons" type="submit" value="Registrar"><br>
+    <p><a href="login">¿Ya tengo Cuenta?</a></p>
+  </form>
+  <div>
+	  {% for message in messages %}
+	  	<h3>{{message}}</h3>
+	  {% endfor %}
+  </div>
+</body>
+</html>

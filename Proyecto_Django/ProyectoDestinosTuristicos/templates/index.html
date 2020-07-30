@@ -1,5 +1,4 @@
 {% load static %}
-{% static "images" as baseUrl %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -10,7 +9,7 @@
 <meta name="description" content="Travello template project">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" type="text/css" href="{% static 'styles/bootstrap4/bootstrap.min.css' %}">
-<link href="{% static 'plugins/font-awesome-4.7.0/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+<link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" type="text/css" href="{% static 'plugins/OwlCarousel2-2.2.1/owl.carousel.css' %}">
 <link rel="stylesheet" type="text/css" href="{% static 'plugins/OwlCarousel2-2.2.1/owl.theme.default.css' %}">
 <link rel="stylesheet" type="text/css" href="{% static 'plugins/OwlCarousel2-2.2.1/animate.css' %}">
@@ -22,7 +21,7 @@
 <div class="super_container">
 
 	<!-- Header -->
-
+	
 	<header class="header">
 		<div class="container">
 			<div class="row">
@@ -33,13 +32,24 @@
 							<nav class="main_nav">
 								<ul class="d-flex flex-row align-items-start justify-content-start">
 									<li class="active"><a href="index.html">Home</a></li>
-									<li><a href="about.html">About us</a></li>
-									<li><a href="#">Services</a></li>
-									<li><a href="news.html">News</a></li>
-									<li><a href="contact.html">Contact</a></li>
+									<li><a href="contact.html">Contacto</a></li>
+									{% if user.is_authenticated  and not user.is_superuser %}				
+										<li>Hola, {{ user.first_name }}</li>
+									     	<li><a href="accounts/logout">Cerrar Sesion</a></li>
+									{% elif user.is_authenticated and user.is_superuser %}
+										<li>Hello, {{ user.first_name }}</li>
+									     	<li><a href="accounts/logout">Cerrar Sesion</a></li>
+										<li><a href="añadir/addDestination">registrar Destino</a></li>
+									
+									{% else %}
+										<li>Hola</li>
+										<li><a href="accounts/login">Iniciar Sesion</a></li>
+
+									{% endif %}
 								</ul>
 							</nav>
-							<div class="header_phone ml-auto">Call us: 00-56 445 678 33</div>
+							<div class="header_phone ml-auto"> Llama:00-56 445 678 </div>
+
 
 							<!-- Hamburger -->
 
@@ -52,6 +62,7 @@
 				</div>
 			</div>
 		</div>
+
 		<div class="header_social d-flex flex-row align-items-center justify-content-start">
 			<ul class="d-flex flex-row align-items-start justify-content-start">
 				<li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
@@ -64,6 +75,7 @@
 		</div>
 	</header>
 
+
 	<!-- Menu -->
 
 	<div class="menu">
@@ -71,6 +83,7 @@
 			<div class="menu_logo"><a href="index.html">Travello</a></div>
 			<div class="menu_close_container ml-auto"><div class="menu_close"><div></div><div></div></div></div>
 		</div>
+				
 		<div class="menu_content">
 			<ul>
 				<li><a href="inex.html">Home</a></li>
@@ -80,6 +93,7 @@
 				<li><a href="contact.html">Contact</a></li>
 			</ul>
 		</div>
+
 		<div class="menu_social">
 			<div class="menu_phone ml-auto">Call us: 00-56 445 678 33</div>
 			<ul class="d-flex flex-row align-items-start justify-content-start">
@@ -92,18 +106,20 @@
 			</ul>
 		</div>
 	</div>
-	
+
 	<!-- Home -->
 
 	<div class="home">
-		
+
 		<!-- Home Slider -->
+
 		<div class="home_slider_container">
 			<div class="owl-carousel owl-theme home_slider">
 				
 				<!-- Slide -->
+
 				<div class="owl-item">
-					<div class="background_image" style="background-image:url(images/home_slider.jpg)"></div>
+					<div class="background_image" style="background-image:url(static/images/home_slider.jpg)"></div>
 					<div class="home_slider_content_container">
 						<div class="container">
 							<div class="row">
@@ -117,9 +133,11 @@
 					</div>
 				</div>
 
+
 				<!-- Slide -->
+
 				<div class="owl-item">
-					<div class="background_image" style="background-image:url(images/home_slider.jpg)"></div>
+					<div class="background_image" style="background-image:url(static/images/home_slider.jpg)"></div>
 					<div class="home_slider_content_container">
 						<div class="container">
 							<div class="row">
@@ -133,9 +151,11 @@
 					</div>
 				</div>
 
+
 				<!-- Slide -->
+
 				<div class="owl-item">
-					<div class="background_image" style="background-image:url(images/home_slider.jpg)"></div>
+					<div class="background_image" style="background-image:url(static/images/home_slider.jpg)"></div>
 					<div class="home_slider_content_container">
 						<div class="container">
 							<div class="row">
@@ -150,6 +170,7 @@
 				</div>
 
 			</div>
+
 
 			<div class="home_page_nav">
 				<ul class="d-flex flex-column align-items-end justify-content-end">
@@ -161,42 +182,20 @@
 		</div>
 	</div>
 
-	<!-- Search -->
-
-	<div class="home_search">
-		<div class="container">
-			<div class="row">
-				<div class="col">
-					<div class="home_search_container">
-						<div class="home_search_title">Search for your trip</div>
-						<div class="home_search_content">
-							<form action="#" class="home_search_form" id="home_search_form">
-								<div class="d-flex flex-lg-row flex-column align-items-start justify-content-lg-between justify-content-start">
-									<input type="text" class="search_input search_input_1" placeholder="City" required="required">
-									<input type="text" class="search_input search_input_2" placeholder="Departure" required="required">
-									<input type="text" class="search_input search_input_3" placeholder="Arrival" required="required">
-									<input type="text" class="search_input search_input_4" placeholder="Budget" required="required">
-									<button class="home_search_button">search</button>
-								</div>
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
 
 	<!-- Intro -->
 
 	<div class="intro">
-		<div class="intro_background" style="background-image:url(images/intro.png)"></div>
+		<div class="intro_background" style="background-image:url(static/images/intro.png)"></div>
 		<div class="container">
 			<div class="row">
 				<div class="col">
 					<div class="intro_container">
 						<div class="row">
 
+
 							<!-- Intro Item -->
+
 							<div class="col-lg-4 intro_col">
 								<div class="intro_item d-flex flex-row align-items-end justify-content-start">
 									<div class="intro_icon"><img src="images/beach.svg" alt=""></div>
@@ -207,7 +206,9 @@
 								</div>
 							</div>
 
+
 							<!-- Intro Item -->
+
 							<div class="col-lg-4 intro_col">
 								<div class="intro_item d-flex flex-row align-items-end justify-content-start">
 									<div class="intro_icon"><img src="images/wallet.svg" alt=""></div>
@@ -218,10 +219,12 @@
 								</div>
 							</div>
 
+
 							<!-- Intro Item -->
+
 							<div class="col-lg-4 intro_col">
 								<div class="intro_item d-flex flex-row align-items-end justify-content-start">
-									<div class="intro_icon"><img src="images/suitcase.svg" alt=""></div>
+									<div class="intro_icon"><img src="static/images/suitcase.svg" alt=""></div>
 									<div class="intro_content">
 										<div class="intro_title">Amazing Services</div>
 										<div class="intro_subtitle"><p>Nulla pretium tincidunt felis, nec.</p></div>
@@ -235,7 +238,7 @@
 			</div>
 		</div>
 	</div>
-	-->
+
 
 	<!-- Destinations -->
 
@@ -247,34 +250,41 @@
 					<div class="section_title"><h2>Popular Destinations</h2></div>
 				</div>
 			</div>
+
 			<div class="row destinations_row">
 				<div class="col">
 					<div class="destinations_container item_grid">
-						{% for dest in dests %}
+
 						<!-- Destination -->
+
+
+					{% for dest in dests %}
 						<div class="destination item">
 							<div class="destination_image">
-								<img src="{{dest.imagenCiudad.url}}" alt="">
+								<img src="{{ dest.imagenCiudad.url }}" alt="">
 								{% if dest.ofertaTour %}
-								    <div class="spec_offer text-center"><a href="#">SPecial Offer</a></div>
+									<div class="spec_offer text-center"><a href="#">Special Offer</a></div>
 								{% endif %}
 							</div>
 							<div class="destination_content">
-								<div class="destination_title"><a href="destinations.html">{{dest.nombreCiudad}}</a></div>
-								<div class="destination_subtitle"><p>{{dest.descripcionCiudad}}</p></div>
-								<div class="destination_price">From {{dest.precioTour}}</div>
+								<div class="destination_title"><a href="destinations.html">{{ dest.nombreCiudad }}</a></div>
+								<div class="destination_subtitle"><p>{{ dest.descripcionCiudad }}</p></div>
+								<div class="destination_price">{{ dest.precioTour }}</div>
 							</div>
-						{% endfor %}
+						</div>
+					{% endfor %}
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 
+
 	<!-- Testimonials -->
 
+
 	<div class="testimonials" id="testimonials">
-		<div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="images/testimonials.jpg" data-speed="0.8"></div>
+		<div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="static/images/testimonials.jpg" data-speed="0.8"></div>
 		<div class="container">
 			<div class="row">
 				<div class="col text-center">
@@ -282,14 +292,31 @@
 					<div class="section_title"><h2>Testimonials</h2></div>
 				</div>
 			</div>
+
 			<div class="row testimonials_row">
 				<div class="col">
 
 					<!-- Testimonials Slider -->
+
 					<div class="testimonials_slider_container">
 						<div class="owl-carousel owl-theme testimonials_slider">
-							
+
+
 							<!-- Slide -->
+							<div class="owl-item text-center">
+
+								<div class="testimonial">Lorem ipsum dolor sit amet, consectetur adipiscing elit. lobortis dolor. Cras placerat lectus a posuere aliquet. Curabitur quis vehicula odio.</div>
+
+								<div class="testimonial_author">
+									<div class="testimonial_author_content d-flex flex-row align-items-end justify-content-start">
+										<div>john turner,</div>
+										<div>client</div>
+									</div>
+								</div>
+							</div>
+
+							<!-- Slide -->
+
 							<div class="owl-item text-center">
 								<div class="testimonial">Lorem ipsum dolor sit amet, consectetur adipiscing elit. lobortis dolor. Cras placerat lectus a posuere aliquet. Curabitur quis vehicula odio.</div>
 								<div class="testimonial_author">
@@ -300,7 +327,9 @@
 								</div>
 							</div>
 
+
 							<!-- Slide -->
+
 							<div class="owl-item text-center">
 								<div class="testimonial">Lorem ipsum dolor sit amet, consectetur adipiscing elit. lobortis dolor. Cras placerat lectus a posuere aliquet. Curabitur quis vehicula odio.</div>
 								<div class="testimonial_author">
@@ -310,23 +339,13 @@
 									</div>
 								</div>
 							</div>
-
-							<!-- Slide -->
-							<div class="owl-item text-center">
-								<div class="testimonial">Lorem ipsum dolor sit amet, consectetur adipiscing elit. lobortis dolor. Cras placerat lectus a posuere aliquet. Curabitur quis vehicula odio.</div>
-								<div class="testimonial_author">
-									<div class="testimonial_author_content d-flex flex-row align-items-end justify-content-start">
-										<div>john turner,</div>
-										<div>client</div>
-									</div>
-								</div>
-							</div>
-
 						</div>
+
 					</div>
 				</div>
 			</div>
 		</div>
+
 		<div class="test_nav">
 			<ul class="d-flex flex-column align-items-end justify-content-end">
 				<li><a href="#">City Breaks Clients<span>01</span></a></li>
@@ -343,10 +362,11 @@
 			<div class="row">
 				<div class="col-xl-8">
 					<div class="news_container">
-						
+
 						<!-- News Post -->
+
 						<div class="news_post d-flex flex-md-row flex-column align-items-start justify-content-start">
-							<div class="news_post_image"><img src="images/news_1.jpg" alt=""></div>
+							<div class="news_post_image"><img src="static/images/news_1.jpg" alt=""></div>
 							<div class="news_post_content">
 								<div class="news_post_date d-flex flex-row align-items-end justify-content-start">
 									<div>02</div>
@@ -357,6 +377,7 @@
 									<ul>
 										<li><a href="#">lifestyle & travel</a></li>
 									</ul>
+
 								</div>
 								<div class="news_post_text">
 									<p>Pellentesque sit amet elementum ccumsan sit amet mattis eget, tristique at leo. Vivamus massa.Tempor massa et laoreet.</p>
@@ -364,9 +385,11 @@
 							</div>
 						</div>
 
+
 						<!-- News Post -->
+
 						<div class="news_post d-flex flex-md-row flex-column align-items-start justify-content-start">
-							<div class="news_post_image"><img src="images/news_2.jpg" alt=""></div>
+							<div class="news_post_image"><img src="static/images/news_2.jpg" alt=""></div>
 							<div class="news_post_content">
 								<div class="news_post_date d-flex flex-row align-items-end justify-content-start">
 									<div>01</div>
@@ -376,6 +399,7 @@
 								<div class="news_post_category">
 									<ul>
 										<li><a href="#">lifestyle & travel</a></li>
+
 									</ul>
 								</div>
 								<div class="news_post_text">
@@ -384,9 +408,11 @@
 							</div>
 						</div>
 
+
 						<!-- News Post -->
+
 						<div class="news_post d-flex flex-md-row flex-column align-items-start justify-content-start">
-							<div class="news_post_image"><img src="images/news_3.jpg" alt=""></div>
+							<div class="news_post_image"><img src="static/images/news_3.jpg" alt=""></div>
 							<div class="news_post_content">
 								<div class="news_post_date d-flex flex-row align-items-end justify-content-start">
 									<div>29</div>
@@ -407,10 +433,11 @@
 					</div>
 				</div>
 
+
 				<!-- News Sidebar -->
 				<div class="col-xl-4">
 					<div class="travello">
-						<div class="background_image" style="background-image:url(images/travello.jpg)"></div>
+						<div class="background_image" style="static/background-image:url(images/travello.jpg)"></div>
 						<div class="travello_content">
 							<div class="travello_content_inner">
 								<div></div>
@@ -431,10 +458,12 @@
 		</div>
 	</div>
 
+
 	<!-- Footer -->
 
+
 	<footer class="footer">
-		<div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="images/footer_1.jpg" data-speed="0.8"></div>
+		<div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="static/images/footer_1.jpg" data-speed="0.8"></div>
 		<div class="container">
 			<div class="row">
 				<div class="col">
@@ -460,9 +489,10 @@
 					<div class="row">
 
 						<!-- Footer Contact Item -->
+						
 						<div class="col-xl-4 footer_contact_col">
 							<div class="footer_contact_item d-flex flex-column align-items-center justify-content-start text-center">
-								<div class="footer_contact_icon"><img src="images/sign.svg" alt=""></div>
+								<div class="footer_contact_icon"><img src="static/images/sign.svg" alt=""></div>
 								<div class="footer_contact_title">give us a call</div>
 								<div class="footer_contact_list">
 									<ul>
@@ -473,10 +503,12 @@
 							</div>
 						</div>
 
+
 						<!-- Footer Contact Item -->
+						
 						<div class="col-xl-4 footer_contact_col">
 							<div class="footer_contact_item d-flex flex-column align-items-center justify-content-start text-center">
-								<div class="footer_contact_icon"><img src="images/trekking.svg" alt=""></div>
+								<div class="footer_contact_icon"><img src="static/images/trekking.svg" alt=""></div>
 								<div class="footer_contact_title">come & drop by</div>
 								<div class="footer_contact_list">
 									<ul style="max-width:190px">
@@ -486,10 +518,12 @@
 							</div>
 						</div>
 
+
 						<!-- Footer Contact Item -->
+
 						<div class="col-xl-4 footer_contact_col">
 							<div class="footer_contact_item d-flex flex-column align-items-center justify-content-start text-center">
-								<div class="footer_contact_icon"><img src="images/around.svg" alt=""></div>
+								<div class="footer_contact_icon"><img src="static/images/around.svg" alt=""></div>
 								<div class="footer_contact_title">send us a message</div>
 								<div class="footer_contact_list">
 									<ul>
@@ -504,6 +538,7 @@
 				</div>
 			</div>
 		</div>
+
 		<div class="col text-center"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --> </div>
@@ -520,5 +555,6 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 <script src="{% static 'plugins/easing/easing.js' %}"></script>
 <script src="{% static 'plugins/parallax-js-master/parallax.min.js' %}"></script>
 <script src="{% static 'js/custom.js' %}"></script>
+
 </body>
 </html>

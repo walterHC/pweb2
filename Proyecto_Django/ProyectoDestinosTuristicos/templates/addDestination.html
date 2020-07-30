@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+
+<html lang="es" >
+<head>
+      <title>Modificar destination | Sitio de administración de Django</title>
+      <link rel="stylesheet" type="text/css" href="/static/admin/css/base.css">
+      <link rel="stylesheet" type="text/css" href="/static/admin/css/forms.css">
+
+
+      <script type="text/javascript" src="/admin/jsi18n/"></script>
+      <script type="text/javascript" src="/static/admin/js/vendor/jquery/jquery.js"></script>
+      <script type="text/javascript" src="/static/admin/js/jquery.init.js"></script>
+      <script type="text/javascript" src="/static/admin/js/core.js"></script>
+      <script type="text/javascript" src="/static/admin/js/admin/RelatedObjectLookups.js"></script>
+      <script type="text/javascript" src="/static/admin/js/actions.js"></script>
+      <script type="text/javascript" src="/static/admin/js/urlify.js"></script>
+      <script type="text/javascript" src="/static/admin/js/prepopulate.js"></script>
+      <script type="text/javascript" src="/static/admin/js/vendor/xregexp/xregexp.js"></script>
+
+      <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0">
+      <link rel="stylesheet" type="text/css" href="/static/admin/css/responsive.css">
+      <meta name="robots" content="NONE,NOARCHIVE">
+</head>
+
+<body class=" app-Destinos model-destination change-form"
+     data-admin-utc-offset="-18000">
+
+	<!-- Container -->
+	<div id="container">
+
+    
+    	<!-- Header -->
+    	<div id="header">
+        	<div id="branding">
+		<h1 id="site-name"><a href="#">Administración de Django</a></h1>
+
+        </div>
+        
+        <div id="user-tools">
+            
+                Bienvenido/a,
+		<strong>{{ user.first_name }}</strong>.
+            
+        </div>
+        
+    </div>
+    <!-- END Header -->
+    
+<div class="breadcrumbs">
+<a href="#">Inicio</a>
+&rsaquo; <a href="#">Destinos</a>
+</div>
+    
+    <!-- Content -->
+    <div id="content" class="colM">
+        
+        <h1>Modificar destination</h1>
+        <div id="content-main">
+
+  <ul class="object-tools">
+      
+	<li><a href="#" class="historylink">Histórico</a></li>
+  </ul>
+
+<form enctype="multipart/form-data" action="addDestination" method="post" id="destination_form"> {% csrf_token %}
+
+<div>
+
+  <fieldset class="module aligned ">
+        <div class="form-row field-nombreCiudad">
+                <div>
+                        <label class="required" for="id_nombreCiudad">NombreCiudad:</label>
+                            <input type="text" name="nombreCiudad" value="" class="vTextField" maxlength="50" required id="id_nombreCiudad">
+                </div>
+        </div>
+
+        <div class="form-row field-imagenCiudad">
+                <div>
+
+                        <label class="required" for="id_imagenCiudad">ImagenCiudad:</label>
+
+                            <input type="file" name="imagenCiudad" accept="image/*" required id="id_imagenCiudad">
+                </div>
+        </div>
+    
+        <div class="form-row field-descripcionCiudad">
+                <div>
+                        <label class="required" for="id_descripcionCiudad">DescripcionCiudad:</label>
+                            <textarea name="descripcionCiudad" cols="40" rows="10" class="vLargeTextField" required id="id_descripcionCiudad"></textarea>
+                </div>
+        </div>
+    
+        <div class="form-row field-precioTour">
+                <div>
+                        <label class="required" for="id_precioTour">PrecioTour:</label>
+                            <input type="number" name="precioTour" value="" class="vIntegerField" required id="id_precioTour">
+                </div>
+        </div>
+    
+        <div class="form-row field-ofertaTour">
+                <div class="checkbox-row">
+                        <input type="checkbox" name="ofertaTour" id="id_ofertaTour" ><label class="vCheckboxLabel" for="id_ofertaTour">OfertaTour</label>
+                </div>
+        </div>
+    
+</fieldset>
+
+	<div class="submit-row">
+
+	     <input type="submit" value="Grabar" class="default" >
+
+	</div>
+	<div>
+	  {% for message in messages %}
+	  	<h3>{{message}}</h3>
+	  {% endfor %}
+        </div>
+
+
+    <script type="text/javascript"
+            id="django-admin-form-add-constants"
+            src="/static/admin/js/change_form.js"
+            >
+    </script>
+
+    <script type="text/javascript"
+        id="django-admin-prepopulated-fields-constants"
+        src="/static/admin/js/prepopulate_init.js"
+        data-prepopulated-fields="[]">
+    </script>
+
+</div>
+</form>
+</div>
+
+        <br class="clear">
+    </div>
+    <!-- END Content -->
+
+    <div id="footer"></div>
+</div>
+<!-- END Container -->
+
+</body>
+</html>
