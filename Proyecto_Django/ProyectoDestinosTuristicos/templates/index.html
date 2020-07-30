@@ -34,21 +34,21 @@
 									<li class="active"><a href="index.html">Home</a></li>
 									<li><a href="contact.html">Contacto</a></li>
 									{% if user.is_authenticated  and not user.is_superuser %}				
-										<li>Hola, {{ user.first_name }}</li>
+										<li>Bienvenido, {{ user.first_name }}</li>
 									     	<li><a href="accounts/logout">Cerrar Sesion</a></li>
 									{% elif user.is_authenticated and user.is_superuser %}
-										<li>Hello, {{ user.first_name }}</li>
+										<li>Bienvenido, {{ user.first_name }}</li>
 									     	<li><a href="accounts/logout">Cerrar Sesion</a></li>
 										<li><a href="añadir/addDestination">registrar Destino</a></li>
 									
 									{% else %}
-										<li>Hola</li>
+										<li>Bienvenido</li>
 										<li><a href="accounts/login">Iniciar Sesion</a></li>
 
 									{% endif %}
 								</ul>
 							</nav>
-							<div class="header_phone ml-auto"> Llama:00-56 445 678 </div>
+							<div class="header_phone ml-auto"> Llama: 954 123 456 </div>
 
 
 							<!-- Hamburger -->
@@ -125,7 +125,7 @@
 							<div class="row">
 								<div class="col">
 									<div class="home_slider_content">
-										<div class="home_title"><h2>Let us take you away</h2></div>
+										<div class="home_title"><h2>La mejor experiencia de viajar la tendras con nosotros</h2></div>
 									</div>
 								</div>
 							</div>
@@ -143,7 +143,7 @@
 							<div class="row">
 								<div class="col">
 									<div class="home_slider_content">
-										<div class="home_title"><h2>Let us take you away</h2></div>
+										<div class="home_title"><h2>La mejor experiencia de viajar la tendras con nosotros</h2></div>
 									</div>
 								</div>
 							</div>
@@ -161,7 +161,7 @@
 							<div class="row">
 								<div class="col">
 									<div class="home_slider_content">
-										<div class="home_title"><h2>Let us take you away</h2></div>
+										<div class="home_title"><h2>La mejor experiencia de viajar la tendras con nosotros</h2></div>
 									</div>
 								</div>
 							</div>
@@ -247,7 +247,7 @@
 			<div class="row">
 				<div class="col text-center">
 					<div class="section_subtitle">simply amazing places</div>
-					<div class="section_title"><h2>Popular Destinations</h2></div>
+					<div class="section_title"><h2>Destinos populares</h2></div>
 				</div>
 			</div>
 
@@ -289,7 +289,7 @@
 			<div class="row">
 				<div class="col text-center">
 					<div class="section_subtitle">simply amazing places</div>
-					<div class="section_title"><h2>Testimonials</h2></div>
+					<div class="section_title"><h2>Testimonios</h2></div>
 				</div>
 			</div>
 
